@@ -2,10 +2,28 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var Username = "Ali";
+    var year = 2024;
+    var people= new string[] {"John", "Mary", "Sarah"};
 }
 
 <div class="text-center">
+    @{year=2020;}
     <h1 class="display-4">Welcome!</h1>
     <h2> This is for Week2<h2>
+    <h3> My username is: @Username</h3>
+    <h4> Current date is : @DateTime.Now</h4>
+    <p>@year is a leap year : @DateTime.IsLeapYear(@year)</p>
+    <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(14))</p>
+    @for (var i = 0; i < people.Length; i++)
+    {
+        var person = people[i];
+        <text> Name_@(i+1): @person</text>
+    }
+
+
+
+
+
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
