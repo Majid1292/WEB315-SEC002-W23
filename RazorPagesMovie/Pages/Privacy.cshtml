@@ -2,7 +2,30 @@
 @model PrivacyModel
 @{
     ViewData["Title"] = "Privacy Policy";
+    var value = 9;
 }
 <h1>@ViewData["Title"]</h1>
+<h2> This is for Week3</h2>
+@if (value % 2 == 0)
+{
+    <p>@value is even.</p>
+}
+else
+{
+    <p>@value is odd.</p>
+}
+
+@switch (value)
+{
+    case 10:
+        <p>The value is @value</p>
+        break;
+    case 9:
+        <p>Your number is @value</p>
+        break;
+    default:
+        <p>Your number wasn't 10 or 9.</p>
+        break;
+}
 
 <p>Use this page to detail your site's privacy policy.</p>

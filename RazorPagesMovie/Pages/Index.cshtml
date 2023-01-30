@@ -15,11 +15,19 @@
     <h4> Current date is : @DateTime.Now</h4>
     <p>@year is a leap year : @DateTime.IsLeapYear(@year)</p>
     <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(14))</p>
-    @for (var i = 0; i < people.Length; i++)
+    @for (var i = 1; i <= people.Length; i++)
     {
-        var person = people[i];
-        <text> Name_@(i+1): @person</text>
+        <span> Name_@(i): @people[i-1]</span>
     }
+    
+    @{var j = 1;}
+    @foreach (var person in people)
+    {
+        <p>Name_@j: @person</p>
+        j++;
+    }
+    
+
 
 
 
