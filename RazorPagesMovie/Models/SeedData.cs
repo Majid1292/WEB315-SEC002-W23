@@ -15,10 +15,10 @@ namespace RazorPagesMovie.Models
                     DbContextOptions<RazorPagesMovieContext>>()))
             {
                 // Look for any movies.
-                // if (context.Movie.Any())
-                // {
-                //     return;   // DB has been seeded
-                // }
+                if (context.Movie.Any())
+                {
+                    return;   // DB has been seeded
+                }
 
                 context.Movie.AddRange(
                     new Movie
@@ -51,15 +51,8 @@ namespace RazorPagesMovie.Models
                         ReleaseDate = DateTime.Parse("1959-4-15"),
                         Genre = "Western",
                         Price = 3.99M
-                    },
-
-                    new Movie
-                    {
-                        Title = "Terminator 1",
-                        ReleaseDate = DateTime.Parse("1985-01-22"),
-                        Genre = "Action",
-                        Price = 35M
                     }
+                    
                 );
                 context.SaveChanges();
             }
