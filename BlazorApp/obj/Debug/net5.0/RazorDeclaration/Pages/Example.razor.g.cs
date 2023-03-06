@@ -90,6 +90,27 @@ using BlazorApp.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 23 "C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\Pages\Example.razor"
+       
+    private string currentHeading = "Initial heading";
+    private string newHeading;
+    private string checkedMessage = "Not changed yet";
+
+
+    private void UpdateHeading()
+    {
+        currentHeading = $"{newHeading}!!";
+    }
+
+    private void CheckChanged()
+    {
+        checkedMessage = $"Last changed at {DateTime.Now}";
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

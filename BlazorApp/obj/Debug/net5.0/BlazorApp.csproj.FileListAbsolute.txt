@@ -58,3 +58,5 @@ C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\BlazorApp.genrunti
 C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\BlazorApp.csproj.CopyComplete
 C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\RazorDeclaration\Pages\Example.razor.g.cs
 C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\Razor\Pages\Example.razor.g.cs
+C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\RazorDeclaration\Pages\Factorial.razor.g.cs
+C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\Razor\Pages\Factorial.razor.g.cs
