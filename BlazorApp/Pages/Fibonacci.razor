@@ -1,0 +1,31 @@
+@page "/fibonacci"
+
+<h3>In this page we use fibonacci functiuon</h3>
+
+<p>The @number th element of fibonacci series is (using for loop): @fibo(number)</p>
+<p>The @number th element of fibonacci series is (using recursive function): @recFibo(number)</p>
+
+
+@code {
+    private int number = 7;
+
+    private int fibo(int num) {
+        var n1=0;
+        var n2=1;
+        var n3=1;
+        for (int i = 1; i < num; i++)
+        {
+            n3= n1 + n2;
+            n1= n2;
+            n2= n3;
+        }
+        return n3;
+    }
+
+    private int recFibo(int num) {
+        if (num <=1) return num;
+        else  return recFibo(num-1) + recFibo(num-2);
+    }
+
+}
+

@@ -60,3 +60,5 @@ C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\RazorDeclaration\P
 C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\Razor\Pages\Example.razor.g.cs
 C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\RazorDeclaration\Pages\Factorial.razor.g.cs
 C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\Razor\Pages\Factorial.razor.g.cs
+C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\RazorDeclaration\Pages\Fibonacci.razor.g.cs
+C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\obj\Debug\net5.0\Razor\Pages\Fibonacci.razor.g.cs
