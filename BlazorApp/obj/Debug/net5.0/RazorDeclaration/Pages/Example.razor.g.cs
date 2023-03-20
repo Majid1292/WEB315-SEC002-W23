@@ -91,16 +91,16 @@ using BlazorApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\Pages\Example.razor"
+#line 28 "C:\Users\MAFSHAR\WEB315-SEC002-W23\BlazorApp\Pages\Example.razor"
        
-    private string currentHeading = "Initial heading";
-    private string newHeading;
+    private int currentHeading = 7;
+    //private int newHeading;
     private string checkedMessage = "Not changed yet";
 
 
-    private void UpdateHeading()
+    private void UpdateHeading(int num)
     {
-        currentHeading = $"{newHeading}!!";
+        currentHeading = num;
     }
 
     private void CheckChanged()

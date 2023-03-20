@@ -1,14 +1,19 @@
 @page "/example"
 
-<h1>@currentHeading</h1>
+<h1>
+    @for(var i=1; i<=currentHeading; i++) 
+    {
+        @i;
+    }
+</h1>
 
 <p>
     <label>
         New title
-        <input @bind="newHeading" />
+        <input value=@currentHeading @onchange= "@(e => UpdateHeading(int.Parse(e.Value.ToString())))"  />
     </label>
 
-    <button @onclick="UpdateHeading">
+    <button >
         Update heading
     </button>
 </p>
@@ -21,14 +26,14 @@
 </p>
 
 @code {
-    private string currentHeading = "Initial heading";
-    private string newHeading;
+    private int currentHeading = 7;
+    //private int newHeading;
     private string checkedMessage = "Not changed yet";
 
 
-    private void UpdateHeading()
+    private void UpdateHeading(int num)
     {
-        currentHeading = $"{newHeading}!!";
+        currentHeading = num;
     }
 
     private void CheckChanged()
