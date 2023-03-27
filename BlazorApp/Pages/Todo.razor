@@ -12,6 +12,19 @@
         <li>
             <input type="checkbox" @bind="todo.IsDone"/>
             @todo.Title
+            <button @onclick="(e) => AddSubItem(todo)">Add Sub Item</button>
+            <input placeholder="Something as Sub Item" @bind="newSubItem">
+            @if (todo.SubItems != null) 
+            {
+                <ul>
+                    @foreach (var subitem in todo.SubItems)
+                    {
+                        <li>
+                            @subitem
+                        </li>
+                    }
+                </ul>
+            }
         </li>
     }
 </ul>
@@ -20,7 +33,8 @@
 @code {
 
     private List<TodoItem> todos= new();
-    private string newTodo;     
+    private string newTodo;
+    private string newSubItem;     
 
     private void AddTodo()
     {
@@ -29,12 +43,22 @@
             todos.Add(new TodoItem {Title = newTodo});
             newTodo=string.Empty;
         }
-    }    
+    } 
+
+    private void AddSubItem(TodoItem currentTodo)
+    {
+        if (currentTodo.SubItems == null)
+        {
+            currentTodo.SubItems= new List<string>();
+        }
+        currentTodo.SubItems.Add(newSubItem);
+    }   
 
     public class TodoItem 
     {
         public string Title {get; set;}
         public bool IsDone {get; set;}
+        public List<string> SubItems {get; set;}
     }
 
 }
