@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.SignalR.Client
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
-
+<h4>@userPing</h4>
 <div class="form-group">
     <label>
         User:
@@ -16,6 +16,12 @@
     </label>
 </div>
 <button @onclick="Send" disabled="@(!IsConnected)">Send</button>
+<button @onclick="SendToCaller" disabled="@(!IsConnected)">Send To Me</button>
+<button @onclick="SendToOthers" disabled="@(!IsConnected)">Send To Other Users</button>
+<button @onclick="SendPing" disabled="@(!IsConnected)">Send Ping</button>
+<div class="form-group">
+    <button @onclick="SendPingToMyself" disabled="@(!IsConnected)">Send ping to me</button>
+</div>
 
 <hr>
 
@@ -31,6 +37,7 @@
     private List<string> messages = new List<string>();
     private string userInput;
     private string messageInput;
+    private string userPing;
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,12 +52,34 @@
             StateHasChanged();
         });
 
+        hubConnection.On<string>("PingUsers", (user) =>
+        {
+            var encodedMsg = $"{user} has pingeed the chat";
+           userPing = encodedMsg;
+            StateHasChanged();
+        });
+
+        hubConnection.On<string, int>("PingMyself", (user, pingNumber) =>
+        {
+            var encodedMsg = $"Hi {user}, your ping is: {pingNumber}";
+            userPing = encodedMsg;
+            StateHasChanged();
+        });
+
         await hubConnection.StartAsync();
     }
 
     async Task Send() =>
         await hubConnection.SendAsync("SendMessage", userInput, messageInput);
-
+    async Task SendToCaller() =>
+            await hubConnection.SendAsync("SendToMe", userInput, messageInput);
+    async Task SendToOthers() =>
+            await hubConnection.SendAsync("SendToOthers", userInput, messageInput);
+    async Task SendPing() =>
+                await hubConnection.SendAsync("SendPingToOthers", userInput);
+    async Task SendPingToMyself() =>
+                await hubConnection.SendAsync("SendPingToCaller", userInput);
+        
     public bool IsConnected =>
         hubConnection.State == HubConnectionState.Connected;
 
