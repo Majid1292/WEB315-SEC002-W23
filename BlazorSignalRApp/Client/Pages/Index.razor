@@ -54,8 +54,9 @@
 
         hubConnection.On<string>("PingUsers", (user) =>
         {
-            var encodedMsg = $"{user} has pingeed the chat";
-           userPing = encodedMsg;
+            var encodedMsg = $"{user} has pinged the chat";
+            userPing = encodedMsg;
+            messages.Add(encodedMsg);
             StateHasChanged();
         });
 
