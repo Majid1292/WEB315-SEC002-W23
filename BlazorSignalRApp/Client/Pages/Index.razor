@@ -12,7 +12,7 @@
 <div class="form-group">
     <label>
         Message:
-        <input @bind="messageInput" size="50" />
+        <input @bind="messageInput" size="50" @oninput="userTyping"/>
     </label>
 </div>
 <button @onclick="Send" disabled="@(!IsConnected)">Send</button>
@@ -22,6 +22,10 @@
 <div class="form-group">
     <button @onclick="SendPingToMyself" disabled="@(!IsConnected)">Send ping to me</button>
 </div>
+
+<h4>
+    @userTypingString
+</h4>
 
 <hr>
 
@@ -38,6 +42,7 @@
     private string userInput;
     private string messageInput;
     private string userPing;
+    private string userTypingString;
 
     protected override async Task OnInitializedAsync()
     {
@@ -49,6 +54,14 @@
         {
             var encodedMsg = $"{user}: {message}";
             messages.Add(encodedMsg);
+            userTypingString="";
+            StateHasChanged();
+        });
+        
+        hubConnection.On<string>("ReceiveTyping", (user) =>
+        {
+            var encodedMsg = $"{user} is typing ...";
+            userTypingString = encodedMsg;
             StateHasChanged();
         });
 
@@ -76,6 +89,8 @@
             await hubConnection.SendAsync("SendToMe", userInput, messageInput);
     async Task SendToOthers() =>
             await hubConnection.SendAsync("SendToOthers", userInput, messageInput);
+    async Task userTyping() =>
+            await hubConnection.SendAsync("Typing", userInput);        
     async Task SendPing() =>
                 await hubConnection.SendAsync("SendPingToOthers", userInput);
     async Task SendPingToMyself() =>

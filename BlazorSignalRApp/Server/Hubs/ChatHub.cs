@@ -18,6 +18,11 @@ namespace BlazorSignalRApp.Server.Hubs
         {
             await Clients.Others.SendAsync("ReceiveMessage", user, message);
         }
+        public async Task Typing(string user)
+        {
+            await Clients.Others.SendAsync("ReceiveTyping", user);
+        }
+
         public async Task SendPingToOthers(string user)
         {
             await Clients.Others.SendAsync("PingUsers", user);
